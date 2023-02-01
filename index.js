@@ -46,6 +46,6 @@ async function test() {
     
 //   });
   console.log(page.url());
-    fs
+    
     console.log(await page.content())
 }
