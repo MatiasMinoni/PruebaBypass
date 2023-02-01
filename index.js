@@ -46,16 +46,16 @@ async function test() {
   //   waitUntil: 'networkidle0',
   // });
 
-  // await page.goto("https://www.glami.es/salida/urban-threads-tall/7361908?o=64&btid=184&t=detail", {
-  //   waitUntil: 'networkidle0',
-  // });
-  
-  await page.goto("https://whatismyipaddress.com/", {
+  await page.goto("https://www.glami.es/salida/urban-threads-tall/7361908?o=64&btid=184&t=detail", {
     waitUntil: 'domcontentloaded',
   });
-  let ip = await page.$eval('#ipv4', el => el.innerText)
+  
+  // await page.goto("https://whatismyipaddress.com/", {
+  //   waitUntil: 'domcontentloaded',
+  // });
+  // let ip = await page.$eval('#ipv4', el => el.innerText)
   let perrito = page.url()
-  console.log(perrito, ip)
+  console.log(perrito)
 }
 
 app.listen(PORT, () => {
