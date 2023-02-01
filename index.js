@@ -17,8 +17,8 @@ async function test() {
   puppeteer.use(hidden())
   const browser = await puppeteer.launch({
     ignoreDefaultArgs: ['--enable-automation'],
-    args: ['--no-sandbox', "--disable-blink-features=AutomationControlled"],
-    headless: true,
+    args: ['--no-sandbox', "--disable-blink-features=AutomationControlled", "--proxy-server=190.61.88.147:8080"],
+    headless: false,
     ignoreHTTPSErrors: true,
 
     executablePath: executablePath(),
@@ -46,13 +46,13 @@ async function test() {
   //   waitUntil: 'networkidle0',
   // });
 
-  await page.goto("https://www.glami.es/salida/urban-threads-tall/7361908?o=64&btid=184&t=detail", {
-    waitUntil: 'networkidle0',
-  });
-  
-  // await page.goto("https://www.google.com/search?q=what+is+my+ip&sxsrf=AJOqlzVdp3hcjASQHu9ZZx3hXCBG0ubhFw%3A1675262992495&source=hp&ei=EHzaY9rmG4G85OUP37ew0Ao&iflsig=AK50M_UAAAAAY9qKIMxYZFL3fOGsLO1PFQKQdK05LHl3&oq=w&gs_lcp=Cgdnd3Mtd2l6EAEYADIECCMQJzIECCMQJzIGCCMQJxATMgQIABBDMgsIABCABBCxAxCDATILCAAQgAQQsQMQgwEyBAgAEEMyBQgAEIAEMgUIABCABDIECAAQQzoHCCMQ6gIQJ1CgAVigAWC3EGgBcAB4AIABSIgBSJIBATGYAQCgAQGwAQo&sclient=gws-wiz", {
+  // await page.goto("https://www.glami.es/salida/urban-threads-tall/7361908?o=64&btid=184&t=detail", {
   //   waitUntil: 'networkidle0',
   // });
+  
+  await page.goto("https://whatismyipaddress.com/", {
+    waitUntil: 'networkidle0',
+  });
   
   let perrito = page.url()
   console.log(perrito)
