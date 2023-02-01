@@ -1,6 +1,8 @@
+import express from 'express';
+const app = express();
 import {createRequire} from "module";
 const require = createRequire(import.meta.url);
-
+const PORT = process.env.PORT || 3000;
 const puppeteer = require('puppeteer-extra');
 const hidden = require('puppeteer-extra-plugin-stealth')
 
@@ -1110,3 +1112,9 @@ console.log("hola");
   let perrito = page.url()
   console.log(perrito)
 }
+
+app.listen(PORT, () => {
+
+    console.log("Server running on port 3000");
+
+})
