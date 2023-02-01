@@ -18,7 +18,7 @@ async function test() {
   const browser = await puppeteer.launch({
     ignoreDefaultArgs: ['--enable-automation'],
     args: ['--no-sandbox', "--disable-blink-features=AutomationControlled", "--proxy-server=190.61.88.147:8080"],
-    headless: false,
+    headless: true,
     ignoreHTTPSErrors: true,
 
     executablePath: executablePath(),
@@ -51,11 +51,11 @@ async function test() {
   // });
   
   await page.goto("https://whatismyipaddress.com/", {
-    waitUntil: 'networkidle0',
+    waitUntil: 'domcontentloaded',
   });
-  
+  let ip = await page.$eval('#ipv4', el => el.innerText)
   let perrito = page.url()
-  console.log(perrito)
+  console.log(perrito, ip)
 }
 
 app.listen(PORT, () => {
