@@ -33,18 +33,19 @@ async function test() {
   });
 
   // Go to page
-//   await page.goto('https://bot.sannysoft.com/', {
-//     waitUntil: 'networkidle0',
+  await page.goto('https://bot.sannysoft.com/', {
+    waitUntil: 'networkidle0',
     
-//   });
+  });
 //   await page.goto('https://nowsecure.nl', {
 //     waitUntil: 'networkidle0',
     
 //   });
-  await page.goto("https://www.glami.es/salida/urban-threads-tall/7361908?o=64&btid=184&t=detail", {
-    waitUntil: 'networkidle0',
+//   await page.goto("https://www.glami.es/salida/urban-threads-tall/7361908?o=64&btid=184&t=detail", {
+//     waitUntil: 'networkidle0',
     
-  });
-  let perrito = page.url()
-  console.log(perrito)
+//   });
+  console.log(page.url());
+    fs
+    console.log(await page.content())
 }
