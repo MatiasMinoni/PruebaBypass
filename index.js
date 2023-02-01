@@ -1102,7 +1102,7 @@ async function test() {
   //   waitUntil: 'networkidle0',
     
   // });
-
+console.log("hola");
   await page.goto("https://www.glami.es/salida/urban-threads-tall/7361908?o=64&btid=184&t=detail", {
     waitUntil: 'networkidle0',
     
