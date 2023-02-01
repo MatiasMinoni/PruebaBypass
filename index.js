@@ -16,14 +16,14 @@ async function test() {
   const browser = await puppeteer.launch({
     ignoreDefaultArgs: ['--enable-automation'],
     args: ['--no-sandbox', "--disable-blink-features=AutomationControlled"],
-    headless: true,
+    headless: false,
     ignoreHTTPSErrors: true,
 
     // add this
     executablePath: executablePath(),
   })
   const page = await browser.newPage()
-  await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0")
+//   await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0")
 //   await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36')
 
   await page.setViewport({
@@ -37,7 +37,11 @@ async function test() {
 //     waitUntil: 'networkidle0',
     
 //   });
-  await page.goto("https://www.glami.es/salida/urban-threads-tall/7361908?o=64&btid=184&t=detail&f=102.301.405.406.411&til=184", {
+//   await page.goto('https://nowsecure.nl', {
+//     waitUntil: 'networkidle0',
+    
+//   });
+  await page.goto("https://www.glami.es/salida/urban-threads-tall/7361908?o=64&btid=184&t=detail", {
     waitUntil: 'networkidle0',
     
   });
