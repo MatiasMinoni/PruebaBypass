@@ -16,7 +16,7 @@ async function test() {
   const browser = await puppeteer.launch({
     ignoreDefaultArgs: ['--enable-automation'],
     args: ['--no-sandbox', "--disable-blink-features=AutomationControlled"],
-    headless: false,
+    headless: true,
     ignoreHTTPSErrors: true,
 
     // add this
