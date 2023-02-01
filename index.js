@@ -1,51 +1,15 @@
-import {createRequire} from "module";
-const require = createRequire(import.meta.url);
-
-const puppeteer = require('puppeteer-extra');
-const hidden = require('puppeteer-extra-plugin-stealth')
-
-// require executablePath from puppeteer
-const {executablePath} = require('puppeteer')
-
-test()
-
-async function test() {
-
-  // Launch sequence
-  puppeteer.use(hidden())
-  const browser = await puppeteer.launch({
-    ignoreDefaultArgs: ['--enable-automation'],
-    args: ['--no-sandbox', "--disable-blink-features=AutomationControlled"],
-    headless: true,
-    ignoreHTTPSErrors: true,
-
-    // add this
-    executablePath: executablePath(),
-  })
-  const page = await browser.newPage()
-//   await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0")
-//   await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36')
-
-  await page.setViewport({
-    width: 1920,
-    height: 1280,
-    deviceScaleFactor: 1,
+import { create } from 'phantom';
+ 
+(async function() {
+  const instance = await create();
+  const page = await instance.createPage();
+  await page.on('onResourceRequested', function(requestData) {
+    console.info('Requesting', requestData.url);
   });
-
-  // Go to page
-  await page.goto('https://bot.sannysoft.com/', {
-    waitUntil: 'networkidle0',
-    
-  });
-//   await page.goto('https://nowsecure.nl', {
-//     waitUntil: 'networkidle0',
-    
-//   });
-//   await page.goto("https://www.glami.es/salida/urban-threads-tall/7361908?o=64&btid=184&t=detail", {
-//     waitUntil: 'networkidle0',
-    
-//   });
-  console.log(page.url());
-    
-    console.log(await page.content())
-}
+ 
+  const status = await page.open('https://www.glami.es/salida/2xu/8124848?o=64&btid=180&t=detail&f=102.301.405.411&til=180');
+  const content = await page.property('url');
+  console.log(content);
+ 
+  await instance.exit();
+})();
